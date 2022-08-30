@@ -1,6 +1,4 @@
 jtype: PaddleNLPFeaturizer
-with:
-  max_seq_length: 512
 py_modules:
   - executor.py
 metas:

@@ -9,19 +9,14 @@ from docarray import DocumentArray, Document
 model_name = os.environ.get('MODEL_NAME', 'ernie-3.0-base-zh')
 
 class PaddleNLPFeaturizer(Executor):
-    def __init__(self, max_seq_length: int = 512, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.max_seq_length = max_seq_length
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
 
     @requests
     def featurize(self, docs: DocumentArray, **kwargs) -> DocumentArray:
-        encoded_inputs = self.tokenizer(
-            text=docs.texts,
-            # max_seq_length=self.max_seq_length,
-            # pad_to_max_seq=True,
-        )
+        encoded_inputs = self.tokenizer(text=docs.texts)
 
         input_ids = encoded_inputs['input_ids']
         token_type_ids = encoded_inputs['token_type_ids']
