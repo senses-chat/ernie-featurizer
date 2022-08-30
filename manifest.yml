@@ -1,0 +1,11 @@
+manifest_version: 1
+name: PaddleNLPFeaturizer
+url: https://github.com/senses-chat/paddlenlp-featurizer
+keywords:
+  - pretrained-model
+  - baidu
+  - Paddle
+  - PaddleNLP
+  - ERNIE
+  - NLP
+  - LLM
