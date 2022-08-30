@@ -13,10 +13,17 @@ class PaddleNLPFeaturizer(Executor):
         super().__init__(**kwargs)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
+        self.model.eval()
 
     @requests
     def featurize(self, docs: DocumentArray, **kwargs) -> DocumentArray:
-        encoded_inputs = self.tokenizer(text=docs.texts)
+        print(len(docs))
+
+        encoded_inputs = self.tokenizer(
+            text=docs.texts,
+            max_seq_len=512,
+            pad_to_max_seq_len=True,
+        )
 
         input_ids = encoded_inputs['input_ids']
         token_type_ids = encoded_inputs['token_type_ids']
