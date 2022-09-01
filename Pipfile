@@ -8,6 +8,7 @@ paddlenlp = "*"
 jina = "*"
 docarray = "*"
 paddlepaddle = "*"
+faster-tokenizer = "*"
 
 [dev-packages]
 

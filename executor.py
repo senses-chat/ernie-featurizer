@@ -11,7 +11,7 @@ model_name = os.environ.get('MODEL_NAME', 'ernie-3.0-base-zh')
 class PaddleNLPFeaturizer(Executor):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, use_faster=True)
         self.model = AutoModel.from_pretrained(model_name)
         self.model.eval()
 
